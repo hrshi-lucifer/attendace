@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card">
+  <h2>Select a course</h2>
+  <form action="{{ url_for('attendance') }}" method="get" class="form">
+    <label for="course_code">Course code</label>
+    <select id="course_code" name="course_code" required>
+      <option value="" disabled selected>Select course</option>
+      {% for course in courses %}
+        <option value="{{ course.course_code }}">
+          {{ course.course_code }} - {{ course.course_title }}
+        </option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="button">Load roster</button>
+  </form>
+</section>
+{% endblock %}
